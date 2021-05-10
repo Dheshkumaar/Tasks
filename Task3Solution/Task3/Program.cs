@@ -121,6 +121,40 @@ namespace Task3
                 Console.WriteLine("Sorry you have already tried 3 times");
             }
         }
+        public static void Question6()
+        {
+            string[] arr = { "kite", "four", "neat", "play", "goal" };
+            Console.WriteLine("play...");
+            int cow = 0, bull = 0;
+            var idx = new Random().Next(arr.Length);
+            string word = arr[idx];
+            do
+            {
+                //Console.WriteLine(word);
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    cow = 0; bull = 0;
+                    Console.WriteLine("guess word");
+                    string GuessWord = Console.ReadLine();
+                    for (i = 0; i < word.Length; i++)
+                    {
+                        if (word[i] == GuessWord[i])
+                            cow += 1;
+                        else
+                        {
+                            for (int j = 0; j < GuessWord.Length; j++)
+                            {
+                                if (word[i] == GuessWord[j] && i != j)
+                                    bull += 1;
+                            }
+                        }
+                    }
+                    Console.WriteLine("Cows-- " + cow + " Bull--" + bull);
+                }
+            } while (cow != 4);
+            if (cow == 4 && bull == 0)
+                Console.WriteLine("You won!!!!!!!");
+        }
         public static void Question7()
         {
             Console.WriteLine("Please enter the Card Number");
@@ -220,6 +254,13 @@ namespace Task3
                         Question5();
                         break;
                     case 6:
+                        string str;
+                        do
+                        {
+                            Question6();
+                            Console.WriteLine("Do you want to continue. Enter yes to continue");
+                            str = Console.ReadLine();
+                        } while (str == "yes");                       
                         break;
                     case 7:
                         Question7();
